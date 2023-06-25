@@ -1,3 +1,4 @@
+from resources.budget.controller import add_budget_resource_table
 from resources.status.controller import add_status_resource_table
 from mongoengine import connect
 from dotenv import load_dotenv
@@ -24,6 +25,7 @@ api = Api(app)
 
 # Endpoint table routes
 add_status_resource_table(api)
+add_budget_resource_table(api)
 
 
 if __name__ == "__main__":
