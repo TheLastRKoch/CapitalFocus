@@ -12,7 +12,6 @@ class BudgetController(Resource):
         # Services
         budget_service = BudgetService()
         web_service = WebService()
-
         body = budget_service.get_list()
         return web_service.response(200, body)
 
@@ -23,23 +22,33 @@ class BudgetController(Resource):
 
 
 class BudgetIDController(Resource):
-    url = "/budget/<budget_id>"
+    url = "/budget/<id>"
 
     # Get by ID
-    def get(self, budget_id):
+    def get(self, id):
         # Services
         budget_service = BudgetService()
         web_service = WebService()
 
-        body = budget_service.get_by_id(budget_id)
+        body = budget_service.get_by_id(id)
         return web_service.response(200, body)
 
     # Update by ID
-    def put(self, budget_id):
-        pass
+    def put(self, id):
+        # Services
+        budget_service = BudgetService()
+        web_service = WebService()
 
-    def delete(self, budget_id):
-        pass
+        body = budget_service.get_by_id(id)
+        return web_service.response(200, body)
+
+    def delete(self, id):
+        # Services
+        budget_service = BudgetService()
+        web_service = WebService()
+
+        body = budget_service.get_by_id(id)
+        return web_service.response(200, body)
 
 
 def add_budget_resource_table(api):
