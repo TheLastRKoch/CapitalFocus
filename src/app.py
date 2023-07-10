@@ -6,6 +6,8 @@ from os import environ as env
 from flask_restful import Api
 from flask import Flask
 
+from resources.transaction.controller import add_transaction_resource_table
+
 # Load .env file
 load_dotenv()
 
@@ -26,6 +28,7 @@ api = Api(app)
 # Endpoint table routes
 add_status_resource_table(api)
 add_budget_resource_table(api)
+add_transaction_resource_table(api)
 
 
 if __name__ == "__main__":

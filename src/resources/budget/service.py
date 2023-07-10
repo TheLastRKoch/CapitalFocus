@@ -4,7 +4,8 @@ from resources.budget.repository import BudgetRepository
 class BudgetService:
 
     def create(self):
-        pass
+        budget_repository = BudgetRepository()
+        return budget_repository.get_by_id(0)
 
     def get_list(self):
         budget_repository = BudgetRepository()

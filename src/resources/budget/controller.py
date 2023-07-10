@@ -1,7 +1,6 @@
-from flask_restful import Resource
-
 from resources.budget.service import BudgetService
 from services.service_web import WebService
+from flask_restful import Resource
 
 
 class BudgetController(Resource):
