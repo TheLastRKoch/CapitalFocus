@@ -11,7 +11,7 @@ class UnclassifiedTransactionController(Resource):
         # Services
         unclassified_transaction_service = UnclassifiedTransactionService()
         web_service = WebService()
-        
+
         body = unclassified_transaction_service.get_list()
         return web_service.response(200, body)
 
@@ -51,9 +51,26 @@ class UnclassifiedTransactionIDController(Resource):
         return web_service.response(200, body)
 
 
+class UnclassifiedTransactionIDClassifyController(Resource):
+
+    url = "/unclassified_transaction/<id>/classify"
+
+    def put(self, id):
+        # Check for required fields
+
+        # Save it into the transaction
+
+        # Removed from unclassified transaction
+
+        pass
+
+
 def add_unclassified_transaction_resource_table(api):
     api.add_resource(UnclassifiedTransactionController,
                      UnclassifiedTransactionController.url)
 
     api.add_resource(UnclassifiedTransactionIDController,
                      UnclassifiedTransactionIDController.url)
+
+    api.add_resource(UnclassifiedTransactionIDClassifyController,
+                     UnclassifiedTransactionIDClassifyController.url)

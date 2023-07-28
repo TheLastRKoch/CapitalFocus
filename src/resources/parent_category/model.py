@@ -1,6 +1,5 @@
 from mongoengine import Document, StringField
 
 
-class category(Document):
+class ParentCategory(Document):
     name = StringField()
-    subcategory = StringField()

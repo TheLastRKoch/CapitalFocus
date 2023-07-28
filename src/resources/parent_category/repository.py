@@ -2,20 +2,20 @@ from services.service_file import FileService
 import json
 
 
-class CategoryRepository:
+class ParentCategoryRepository:
 
     # !Mock
     def get_list(self):
         service_file = FileService()
         return json.loads(service_file.read_textfile(
-            "examples/category/list.jsonc"
+            "examples/parent_category/list.jsonc"
         ))
 
     # !Mock
     def get_by_id(self, id):
         service_file = FileService()
         return json.loads(service_file.read_textfile(
-            "examples/category/list.jsonc"))["items"][int(id)]
+            "examples/parent_category/list.jsonc"))["items"][int(id)]
 
     # !Mock
     def update_by_id(self, id):
