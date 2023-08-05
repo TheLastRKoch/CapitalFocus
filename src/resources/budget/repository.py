@@ -4,12 +4,14 @@ import json
 
 class BudgetRepository:
 
+    def __init__(self):
+        pass
+
     # !Mock
     def get_list(self):
-        service_file = FileService()
-        return json.loads(service_file.read_textfile(
-            "examples/budget/list.jsonc"
-        ))
+
+        view = list(self.collection.find({}))
+        return view
 
     # !Mock
     def get_by_id(self, id):

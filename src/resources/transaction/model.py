@@ -1,12 +1,12 @@
-from mongoengine import Document, StringField, IntField
+from mongoengine import Document, StringField, IntField, DateField
 
 
-class transaction(Document):
+class Transaction(Document):
     name = StringField()
-    date = StringField()
-    userID = StringField()
+    date = DateField()
+    # userID = StringField()
     reference = StringField()
     amount = IntField()
     type = StringField()
     annotation = StringField()
-    categotyID = StringField()
+    # categotyID = StringField()

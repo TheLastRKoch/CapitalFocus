@@ -7,27 +7,20 @@ from resources.status.controller import add_status_resource_table
 from resources.user.controller import add_user_resource_table
 from mongoengine import connect
 from dotenv import load_dotenv
-from os import environ as env
 from flask_restful import Api
+from os import environ as env
 from flask import Flask
 
-
 # Load .env file
 load_dotenv()
-
-
-# Load .env file
-load_dotenv()
-
-
-# Connect to MongoDB
-connect(host=env["uri"])
 
 
 # Init App
 app = Flask(__name__)
 api = Api(app)
 
+# DB
+connect(host=env["MONGO_URI"])
 
 # Endpoint table routes
 add_unclassified_transaction_resource_table(api)
