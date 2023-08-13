@@ -1,25 +1,23 @@
-from services.service_file import FileService
 import json
+from resources.user.model import User
 
 
 class UserRepository:
 
-    # !Mock
-    def get_list(self):
-        service_file = FileService()
-        return json.loads(service_file.read_textfile(
-            "examples/user/list.jsonc"
-        ))
+    def create(self, name, email):
+        new = User(name=name, email=email)
+        new.save()
 
-    # !Mock
     def get_by_id(self, id):
-        service_file = FileService()
-        return json.loads(service_file.read_textfile(
-            "examples/user/list.jsonc"))["items"][int(id)]
+        return json.loads(User.objects.get(id=id).to_json())
 
     # !Mock
-    def update_by_id(self, id):
-        return self.get_by_id(id)
+    def update_by_id(self, id, name, email):
+        user_to_update = json.loads(User.objects.get(id=id).to_json())
+        user_to_update.name = name
+        user_to_update.email = email
+        user_to_update.save()
+
 
     # !Mock
     def delete_by_id(self, id):

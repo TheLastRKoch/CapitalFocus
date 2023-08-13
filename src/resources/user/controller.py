@@ -1,22 +1,22 @@
+import json
 from resources.user.service import UserService
 from services.service_web import WebService
 from flask_restful import Resource
+from flask import request
 
 
 class UserController(Resource):
     url = "/user"
 
-    # List
-    def get(self):
+    # Create
+    # TODO: Only Admin role can reach this endpoint
+    def post(self):
         # Services
         user_service = UserService()
         web_service = WebService()
-        body = user_service.get_list()
-        return web_service.response(200, body)
 
-    # Create
-
-    def post(self):
+        view = request.get_json()
+        stop = ""
         pass
 
 

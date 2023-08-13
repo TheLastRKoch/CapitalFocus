@@ -7,10 +7,6 @@ class UserService:
         user_repository = UserRepository()
         return user_repository.get_by_id(0)
 
-    def get_list(self):
-        user_repository = UserRepository()
-        return user_repository.get_list()
-
     def get_by_id(self, id):
         user_repository = UserRepository()
         return user_repository.get_by_id(id)
@@ -19,6 +15,6 @@ class UserService:
         user_repository = UserRepository()
         return user_repository.delete_by_id(id)
 
-    def update(self, id):
+    def update(self, id, name, email):
         user_repository = UserRepository()
-        return user_repository.update_by_id(id)
+        return user_repository.update_by_id(id, name, email)

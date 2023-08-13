@@ -1,6 +1,6 @@
 from mongoengine import Document, StringField
 
 
-class user(Document):
+class User(Document):
     name = StringField()
     email = StringField()
