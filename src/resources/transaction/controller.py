@@ -1,14 +1,18 @@
 from resources.transaction.service import TransactionService
+from services.service_auth import check_token
 from services.service_web import WebService
 from flask_restful import Resource
+from flask import request
 
 
 class TransactionController(Resource):
     url = "/transaction"
 
     # List
+    @check_token
     def get(self):
         # Services
+        view = request.user
         transaction_service = TransactionService()
         web_service = WebService()
         body = transaction_service.get_list()
