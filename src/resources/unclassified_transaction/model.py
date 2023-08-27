@@ -1,10 +1,16 @@
-from mongoengine import Document, StringField, IntField
+from sqlalchemy import Column, Integer, String
+from database import Base, engine
 
 
-class unclassifiedTransaction(Document):
-    name = StringField()
-    date = StringField()
-    userID = StringField()
-    reference = StringField()
-    amount = IntField()
-    type = StringField()
+class unclassifiedTransaction(Base):
+    __tablename__ = "unclassifiedTransaction"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String)
+    reference = Column(String)
+    amount = Column(Integer)
+    type = Column(String)
+    date = Column(String)
+    userID = Column(String)
+
+
+Base.metadata.create_all(engine,  checkfirst=True)

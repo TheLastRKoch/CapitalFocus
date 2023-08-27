@@ -1,10 +1,10 @@
-from resources.parent_category.service import ParentCategoryService
+from resources.parent_category.service import CategoryService
 from services.service_web import WebService
 from flask_restful import Resource
 
 
 class ParentCategoryController(Resource):
-    url = "/parent_category"
+    url = "/category"
 
     # List
     def get(self):
@@ -21,7 +21,7 @@ class ParentCategoryController(Resource):
 
 
 class ParentCategoryIDController(Resource):
-    url = "/parent_category/<id>"
+    url = "/category/<id>"
 
     # Get by ID
     def get(self, id):
