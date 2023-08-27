@@ -11,6 +11,7 @@ from flask_restful import Api
 from os import environ as env
 from flask import Flask
 
+
 # Load .env file
 load_dotenv()
 
