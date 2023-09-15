@@ -9,8 +9,8 @@ class Subcategory(Base):
     name = Column(String)
 
     # Relationships
-    categories = relationship("Category", back_populates="subcategory")
-    transactions = relationship("Transaction", back_populates="subcategory")
+    # category = relationship("Category", back_populates="subcategory")
+    # transactions = relationship("Transaction", back_populates="subcategory")
 
 
 Base.metadata.create_all(engine,  checkfirst=True)

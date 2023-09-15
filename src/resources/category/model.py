@@ -9,7 +9,7 @@ class Category(Base):
     name = Column(String)
 
     # Relationships
-    subcategory = relationship("Subcategory", back_populates="category")
+    subcategories = relationship("Subcategory", back_populates="category")
 
 
 Base.metadata.create_all(engine,  checkfirst=True)

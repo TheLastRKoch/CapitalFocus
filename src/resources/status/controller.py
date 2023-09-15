@@ -17,7 +17,7 @@ class StatusHomeController(Resource):
             "http://127.0.0.1:5000/category",
             "http://127.0.0.1:5000/budget",
             "http://127.0.0.1:5000/transaction",
-            "http://127.0.0.1:5000/unclassified_transaction"
+            "http://127.0.0.1:5000/unclassified_transaction",
             "http://127.0.0.1:5000/user/login"
         ]}
 

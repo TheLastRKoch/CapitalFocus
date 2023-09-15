@@ -3,9 +3,10 @@ from resources.unclassified_transaction.repository import UnclassifiedTransactio
 
 class UnclassifiedTransactionService:
 
-    def create(self):
-        transaction_repository = UnclassifiedTransactionRepository()
-        return transaction_repository.get_by_id(0)
+    def create(self, date, user, reference, description, amount, type):
+        unclassified_transaction_new = UnclassifiedTransactionRepository()
+        unclassified_transaction_new.create(date, user, reference, description, amount, type)
+        return unclassified_transaction_new
 
     def get_list(self):
         transaction_repository = UnclassifiedTransactionRepository()

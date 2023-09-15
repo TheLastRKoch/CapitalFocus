@@ -12,9 +12,12 @@ class TransactionController(Resource):
     @check_token
     def get(self):
         # Services
-        view = request.user
+        logged = request.user
+
+        # Service definition
         transaction_service = TransactionService()
         web_service = WebService()
+        
         body = transaction_service.get_list()
         return web_service.response(200, body)
 

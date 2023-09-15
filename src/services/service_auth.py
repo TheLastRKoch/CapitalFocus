@@ -24,8 +24,8 @@ def check_token(func):
             token = request.headers.get("Authorization").replace("bearer ", "")
             user = auth.get_account_info(token)
             request.user = user
-        except Exception as ex:
-            print(ex)
+        except Exception:
+            
             return {"message": "Invalid token provided"}, 400
         # TODO: Add loggin
         return func(*args, **kwargs)
@@ -48,7 +48,6 @@ def login(email, password):
     try:
         auth = firebase.auth()
         return auth.sign_in_with_email_and_password(email, password)["idToken"]
-    except Exception as ex:
-        print(ex)
+    except Exception:
         return None
     # TODO: Add loggin

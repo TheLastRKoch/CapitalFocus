@@ -15,8 +15,8 @@ class Transaction(Base):
     annotation = Column(String)
 
     # Relationships
-    sections = relationship("Section", secondary="section_transaction", back_populates="transactions")
-    Category = relationship("Subcategory", back_populates="transaction")
+    # sections = relationship("Section", secondary="section_transaction", back_populates="transactions")
+    # Category = relationship("Subcategory", back_populates="transaction")
 
 
 Base.metadata.create_all(engine,  checkfirst=True)

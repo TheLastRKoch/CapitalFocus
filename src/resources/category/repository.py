@@ -2,7 +2,7 @@ from services.service_file import FileService
 import json
 
 
-class ParentCategoryRepository:
+class CategoryRepository:
 
     # !Mock
     def get_list(self):
