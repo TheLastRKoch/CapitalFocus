@@ -1,8 +1,5 @@
 from resources.unclassified_transaction.model import UnclassifiedTransaction
-from services.service_file import FileService
 from database import session
-import jmespath
-import json
 
 
 class UnclassifiedTransactionRepository:
@@ -21,22 +18,44 @@ class UnclassifiedTransactionRepository:
         session.commit()
         return {"The unclassified transaction has been saved successfully", new}
 
-    # !Mock
+    def get_list(self, userID):
+        unclassified_transaction_list = session.query(UnclassifiedTransaction).filter(UnclassifiedTransaction.userID == userID)
+        return [{
+            "id": item.id,
+            "date": item.date,
+            "userID": item.userID,
+            "reference": item.reference,
+            "description": item.description,
+            "amount": item.amount,
+            "type": item.type
+        } for item in unclassified_transaction_list]
 
-    def get_list(self):
-        view = session.query(UnclassifiedTransaction)
-        return None
-
-    # !Mock
     def get_by_id(self, id):
-        service_file = FileService()
-        return jmespath.search(f"@.items[?contains (id, '{id}')] | [0]", json.loads(service_file.read_textfile(
-            "examples/unclassified_transaction/list.jsonc")))
+        unclassified_transaction_list = session.query(UnclassifiedTransaction).filter(UnclassifiedTransaction.id == id)
+        return [{
+            "id": item.id,
+            "date": item.date,
+            "userID": item.userID,
+            "reference": item.reference,
+            "description": item.description,
+            "amount": item.amount,
+            "type": item.type
+        } for item in unclassified_transaction_list]
 
-    # !Mock
-    def update_by_id(self, id):
-        return self.get_by_id(id)
+    def update_by_id(self, id, date,  reference, description, amount, type):
 
-    # !Mock
+        unclassified_transaction = session.query(UnclassifiedTransaction).filter(UnclassifiedTransaction.id == id).first()
+
+        unclassified_transaction.date = date
+        unclassified_transaction.reference = reference
+        unclassified_transaction.description = description
+        unclassified_transaction.amount = amount
+        unclassified_transaction.type = type
+        session.commit()
+
+        return unclassified_transaction
+
     def delete_by_id(self, id):
-        return True
+        unclassified_transaction = session.query(UnclassifiedTransaction).filter(UnclassifiedTransaction.id == id).first()
+        session.delete(unclassified_transaction)
+        return f"Element with the id {id} has been successfully removed"

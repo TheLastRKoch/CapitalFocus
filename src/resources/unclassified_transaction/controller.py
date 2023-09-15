@@ -27,12 +27,15 @@ class UnclassifiedTransactionController(Resource):
         )
 
     # List
+    @check_token
     def get(self):
         # Services
         unclassified_transaction_service = UnclassifiedTransactionService()
         web_service = WebService()
 
-        body = unclassified_transaction_service.get_list()
+        userID = request.user["users"][0]["localId"]
+
+        body = unclassified_transaction_service.get_list(userID)
         return web_service.response(200, body)
 
 
@@ -50,19 +53,27 @@ class UnclassifiedTransactionIDController(Resource):
 
     # Update by ID
     def put(self, id):
-        # Services
-        UnclassifiedTransaction_service = UnclassifiedTransactionService()
-        web_service = WebService()
 
-        body = UnclassifiedTransaction_service.get_by_id(id)
-        return web_service.response(200, body)
+        # Service definition
+        unclassified_transaction_service = UnclassifiedTransactionService()
+
+        body = request.json
+
+        unclassified_transaction_service.update(
+            id,
+            body["date"],
+            body["reference"],
+            body["description"],
+            body["amount"],
+            body["type"],
+        )
 
     def delete(self, id):
         # Services
         UnclassifiedTransaction_service = UnclassifiedTransactionService()
         web_service = WebService()
 
-        body = UnclassifiedTransaction_service.get_by_id(id)
+        body = UnclassifiedTransaction_service.delete(id)
         return web_service.response(200, body)
 
 
@@ -71,13 +82,7 @@ class UnclassifiedTransactionIDClassifyController(Resource):
     url = "/unclassified_transaction/<id>/classify"
 
     def put(self, id):
-        # Check for required fields
-
-        # Save it into the transaction
-
-        # Removed from unclassified transaction
-
-        pass
+        return {"msg": "This feature stills in process"}
 
 
 def add_unclassified_transaction_resource_table(api):
